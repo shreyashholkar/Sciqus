@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>eLEARNING - eLearning </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+   <!-- Libraries Stylesheet -->
+   <link href="{{ url_for('static',filename='/lib/animate/animate.min.css')}}" rel="stylesheet">
+   <link href="{{ url_for('static',filename='/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+
+   <!-- Customized Bootstrap Stylesheet -->
+   <link href="{{ url_for('static',filename='/css/bootstrap.min.css')}}" rel="stylesheet">
+
+   
+   <!-- Template Stylesheet -->
+   <link href="{{ url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+    
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Students</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <a href="/student_add" class="btn btn-primary" style="padding-left: 70px; padding-right: 70px;;">Add Students</a>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                <th scope="col">Student Name</th>
+                <th scope="col">PRN</th>
+                <th scope="col">Semester</th>
+               
+
+              </tr>
+            </thead>
+            <tbody>
+            
+              
+              <tr>
+                
+                <td>{{students.student_name}}</td>
+                <td>{{students.prn}}</td>
+                <td>{{students.sem}}</td>
+                
+              </tr>
+             
+              
+            </tbody>
+          </table>
+    
+    
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                
+                <th scope="col">Course Name</th>
+
+              </tr>
+            </thead>
+            
+    <div class="col-lg-4 col-md-12 wow " data-wow-delay="0.5s" style="margin-left: 33%;">
+        <form action="/allot_course_add" method="POST"> 
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" name="sid" hidden value="{{students.student_id}}"  class="form-control" id="name" placeholder="Your Name">
+                        
+                    </div>
+                </div>
+                
+
+                <div class="col-12">
+                    <div class="form-floating">
+                          
+                          <select class="btn dropdown-toggle form-control" name="selected_course">
+                            <option selected disabled>Select Course</option>
+                            {% for c in c %}
+                                <option value="{{ c.course_id }}">{{ c.course_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">    
+                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <tbody>
+               
+        {% for course in course %}
+      <tr>
+        
+       
+        <td>{{course.course_name}}</td>
+        <td><a href="/allocation_delete/{{students.student_id}}/{{ course.course_id }}" class="btn btn-primary">Remove</a></td>
+
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static',filename='lib/wow/wow.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/easing/easing.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    
+    <!-- Template Javascript -->
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+
+</html>
