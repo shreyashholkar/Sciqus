@@ -1,12 +1,25 @@
-1) requirnments
-xampp
-flask
-python
-visual studio
+## Prerequisites
 
-2) import database(sciqus_task.sql) into xampp mysql
+Ensure you have the following software installed:
 
-3) in visual studio run the comman 
-python app.python
+- XAMPP
+- Flask
+- Python
+- Visual Studio Code (or any preferred code editor)
 
-4) And visit the link
+## Database Setup
+
+1. Import the provided database `sciqus_task.sql` into XAMPP MySQL.
+
+## Running the Application
+
+1. Open Visual Studio Code.
+2. Navigate to your project directory.
+3. Open a terminal.
+4. Run the following command to start the Flask application:
+
+    ```bash
+    python app.py
+    ```
+
+5. Visit the generated link in your browser.
